@@ -20,4 +20,25 @@ class BlogController extends AbstractController
             'owner' => 'Thomas',
         ]);
     }
+
+    /**
+     * @Route("/blog/show/{article}",
+     *     name="blog_show"
+     * )
+     */
+
+    public function show($article = ' ')
+    {
+        if($article === ' '){
+            $slug = 'Article Sans Titre';
+        }
+        else if(preg_match('/[A-Z]/', $article) || preg_match('/_/', $article)){
+            throw $this->createNotFoundException('404 not found');
+        }
+        else{
+            $slug = ucwords(str_replace('-', ' ', $article));
+        }
+
+        return $this->render('blog/show.html.twig', ['articles' => $slug]);
+    }
 }
