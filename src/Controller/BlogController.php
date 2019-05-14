@@ -5,40 +5,101 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Article;
+use App\Entity\Category;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/blog", name="blog_index")
+     * @Route("/", name="index")
      */
 
-    public function index()
+    public function index() :Response
     {
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findAll();
+
+        if(!$articles){
+            throw $this->createNotFoundException('No article found');
+        }
+
         return $this->render('blog/index.html.twig', [
-            'owner' => 'Thomas',
+            'articles' => $articles,
         ]);
     }
 
+/**
+* Getting a article with a formatted slug for title
+*
+* @param string $slug The slugger
+*
+* @Route("/{slug<^[a-z0-9-]+$>}",
+*     defaults={"slug" = null},
+*     name="blog_show")
+ *  @return Response A response instance
+*/
+ public function show(?string $slug) : Response
+{
+    if (!$slug) {
+        throw $this
+            ->createNotFoundException('No slug has been sent to find an article in article\'s table.');
+    }
+
+    $slug = preg_replace(
+        '/-/',
+        ' ', ucwords(trim(strip_tags($slug)), "-")
+    );
+
+    $article = $this->getDoctrine()
+        ->getRepository(Article::class)
+        ->findOneBy(['title' => mb_strtolower($slug)]);
+
+    if (!$article) {
+        throw $this->createNotFoundException(
+            'No article with '.$slug.' title, found in article\'s table.'
+        );
+    }
+
+    return $this->render(
+        'blog/show.html.twig',
+        [
+            'article' => $article,
+            'slug' => $slug,
+        ]
+    );
+}
+
     /**
-     * @Route("/blog/show/{article}",
-     *     name="blog_show"
-     * )
+     * @Route("/blog/category/{category}",defaults={"category" = "javascript"}, name="show_category")
      */
 
-    public function show($article = ' ')
+
+    public function showByCategory(string $category)
     {
-        if($article === ' '){
-            $slug = 'Article Sans Titre';
-        }
-        else if(preg_match('/[A-Z]/', $article) || preg_match('/_/', $article)){
-            throw $this->createNotFoundException('404 not found');
-        }
-        else{
-            $slug = ucwords(str_replace('-', ' ', $article));
+
+        if (!$category) {
+            throw $this->createNotFoundException('No slug has been sent to search in categories');
         }
 
-        return $this->render('blog/show.html.twig', ['articles' => $slug]);
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => $category]);
+        $categoryID = (Array)$categories;
+        $categoryID = array_shift($categoryID);
+
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findBy(['category' => $categoryID], array('id' => 'DESC'), 3);
+
+        if(!$articles){
+            throw $this->createNotFoundException('No article found');
+        }
+
+        return $this->render('blog/category.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 }
