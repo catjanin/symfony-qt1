@@ -111,3 +111,7 @@ c17d6d,127.0.0.1,GET,http://localhost:3000/blog/show/zerzzeze--tyty------yojh_,1
 9923d3,127.0.0.1,GET,http://localhost:3000/blog/show/zerzzeze--tyty------yojh_,1557742504,,404
 31adfd,127.0.0.1,GET,http://localhost:3000/blog/show/zerzzeze--tyty------yojh_,1557742511,0358e7,200
 0358e7,127.0.0.1,GET,http://localhost:3000/blog/show/zerzzeze--tyty------yojh_,1557742511,,404
+8348f0,127.0.0.1,GET,http://localhost:3000/,1557820112,,200
+691597,127.0.0.1,GET,http://localhost:3000/,1557820115,,200
+633126,127.0.0.1,GET,http://localhost:3000/_,1557820118,7da837,200
+7da837,127.0.0.1,GET,http://localhost:3000/_,1557820118,,404
