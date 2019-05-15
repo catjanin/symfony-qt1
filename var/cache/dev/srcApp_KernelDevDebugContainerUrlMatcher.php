@@ -40,8 +40,8 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                         .')'
                     .')'
                     .'|/([a-z0-9-]+)?(*:183)'
-                    .'|/blog/category(?:/([^/]++))?(*:219)'
-                    .'|/(*:228)'
+                    .'|/category(?:/([^/]++))?(*:214)'
+                    .'|/(*:223)'
                 .')/?$}sDu',
         ];
         $this->dynamicRoutes = [
@@ -53,8 +53,8 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
             159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
             183 => [[['_route' => 'blog_show', 'slug' => null, '_controller' => 'App\\Controller\\BlogController::show'], ['slug'], null, null, false, true, null]],
-            219 => [[['_route' => 'show_category', 'category' => 'javascript', '_controller' => 'App\\Controller\\BlogController::showByCategory'], ['category'], null, null, false, true, null]],
-            228 => [[['_route' => 'app_index', '_controller' => 'App\\Controller\\DefaultController::index'], [], null, null, false, false, null]],
+            214 => [[['_route' => 'show_category', 'category' => 'javascript', '_controller' => 'App\\Controller\\BlogController::showByCategory'], ['category'], null, null, false, true, null]],
+            223 => [[['_route' => 'app_index', '_controller' => 'App\\Controller\\DefaultController::index'], [], null, null, false, false, null]],
         ];
     }
 }

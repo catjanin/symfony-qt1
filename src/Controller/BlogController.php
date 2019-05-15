@@ -73,7 +73,7 @@ class BlogController extends AbstractController
 }
 
     /**
-     * @Route("/blog/category/{category}",defaults={"category" = "javascript"}, name="show_category")
+     * @Route("/category/{category}",defaults={"category" = "javascript"}, name="show_category")
      */
 
 
@@ -84,15 +84,12 @@ class BlogController extends AbstractController
             throw $this->createNotFoundException('No slug has been sent to search in categories');
         }
 
-        $categories = $this->getDoctrine()
+        $category = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => $category]);
-        $categoryID = (Array)$categories;
-        $categoryID = array_shift($categoryID);
 
-        $articles = $this->getDoctrine()
-            ->getRepository(Article::class)
-            ->findBy(['category' => $categoryID], array('id' => 'DESC'), 3);
+        $articles = $category->getArticles();
+
 
         if(!$articles){
             throw $this->createNotFoundException('No article found');
