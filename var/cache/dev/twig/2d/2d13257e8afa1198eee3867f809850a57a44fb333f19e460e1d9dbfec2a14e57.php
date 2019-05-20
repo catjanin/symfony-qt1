@@ -57,7 +57,9 @@ class __TwigTemplate_d627d1130e329e6ded2d3f6cdb2821310084aa05e1841d925a63beab5bd
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 2
-        echo "    <h1>All js articles</h1>
+        echo "    <h1>All ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 2, $this->source); })()), 0, [], "array", false, false, false, 2), "category", [], "any", false, false, false, 2), "name", [], "any", false, false, false, 2), "html", null, true);
+        echo " articles</h1>
     ";
         // line 3
         $context['_parent'] = $context;
@@ -133,13 +135,13 @@ class __TwigTemplate_d627d1130e329e6ded2d3f6cdb2821310084aa05e1841d925a63beab5bd
 
     public function getDebugInfo()
     {
-        return array (  115 => 11,  108 => 9,  92 => 6,  84 => 5,  81 => 4,  63 => 3,  60 => 2,  42 => 1,);
+        return array (  117 => 11,  110 => 9,  94 => 6,  86 => 5,  83 => 4,  65 => 3,  60 => 2,  42 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% block body %}
-    <h1>All js articles</h1>
+    <h1>All {{ articles[0].category.name }} articles</h1>
     {% for article in articles %}
         <div>
             <h2>{{ loop.index }} / {{ article.title }} - Category : {{ article.category.name }}</h2>

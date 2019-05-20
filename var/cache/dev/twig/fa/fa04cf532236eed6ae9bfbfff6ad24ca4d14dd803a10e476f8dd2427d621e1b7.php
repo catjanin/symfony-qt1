@@ -38,7 +38,7 @@ class __TwigTemplate_4303f4281b864ea8157bdf4c675809e50abc1d9c397897739360318353a
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "blog/show.html.twig"));
 
         // line 1
-        echo twig_escape_filter($this->env, (isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 1, $this->source); })()), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["slug"]) || array_key_exists("slug", $context) ? $context["slug"] : (function () { throw new RuntimeError('Variable "slug" does not exist.', 1, $this->source); })()), "html", null, true);
         echo "
 ";
         
@@ -66,7 +66,7 @@ class __TwigTemplate_4303f4281b864ea8157bdf4c675809e50abc1d9c397897739360318353a
 
     public function getSourceContext()
     {
-        return new Source("{{ articles }}
+        return new Source("{{ slug }}
 ", "blog/show.html.twig", "/home/angel/symfonyQT/quete1/blog/templates/blog/show.html.twig");
     }
 }

@@ -1,5 +1,5 @@
 {% block body %}
-    <h1>All js articles</h1>
+    <h1>All {{ articles[0].category.name }} articles</h1>
     {% for article in articles %}
         <div>
             <h2>{{ loop.index }} / {{ article.title }} - Category : {{ article.category.name }}</h2>
