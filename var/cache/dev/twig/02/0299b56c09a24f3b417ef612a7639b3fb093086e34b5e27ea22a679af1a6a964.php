@@ -116,6 +116,31 @@ class __TwigTemplate_cd549b1ffd48e58c6a6d0646e3cc337d561d00e482ebda440ab5d35d3d7
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["article"], "content", [], "any", false, false, false, 10), "html", null, true);
             echo "</p>
         </div>
+        <strong>Tags :</strong>
+        <ul>
+            ";
+            // line 14
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["article"], "tags", [], "any", false, false, false, 14));
+            $context['_iterated'] = false;
+            foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+                // line 15
+                echo "                <li>";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["tag"], "name", [], "any", false, false, false, 15), "html", null, true);
+                echo " </li>
+            ";
+                $context['_iterated'] = true;
+            }
+            if (!$context['_iterated']) {
+                // line 17
+                echo "                <li>No tags for this article</li>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 19
+            echo "        </ul>
     ";
             $context['_iterated'] = true;
             ++$context['loop']['index0'];
@@ -128,14 +153,14 @@ class __TwigTemplate_cd549b1ffd48e58c6a6d0646e3cc337d561d00e482ebda440ab5d35d3d7
             }
         }
         if (!$context['_iterated']) {
-            // line 13
+            // line 21
             echo "        Aucun article trouvé.
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
+        // line 23
         echo "    <a href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index");
         echo "\">
@@ -162,7 +187,7 @@ class __TwigTemplate_cd549b1ffd48e58c6a6d0646e3cc337d561d00e482ebda440ab5d35d3d7
 
     public function getDebugInfo()
     {
-        return array (  139 => 15,  132 => 13,  116 => 10,  108 => 9,  105 => 8,  87 => 7,  84 => 6,  75 => 5,  57 => 3,  35 => 1,);
+        return array (  164 => 23,  157 => 21,  143 => 19,  136 => 17,  128 => 15,  123 => 14,  116 => 10,  108 => 9,  105 => 8,  87 => 7,  84 => 6,  75 => 5,  57 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -178,6 +203,14 @@ class __TwigTemplate_cd549b1ffd48e58c6a6d0646e3cc337d561d00e482ebda440ab5d35d3d7
             <h2>{{ loop.index }} / {{ article.title }} - Category : {{ article.category.name }}</h2>
             <p>{{ article.content }}</p>
         </div>
+        <strong>Tags :</strong>
+        <ul>
+            {% for tag in article.tags %}
+                <li>{{ tag.name }} </li>
+            {% else %}
+                <li>No tags for this article</li>
+            {% endfor %}
+        </ul>
     {% else %}
         Aucun article trouvé.
     {% endfor %}

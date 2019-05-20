@@ -7,13 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Tag;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/blog", name="index")
      */
 
     public function index() :Response
@@ -73,6 +74,28 @@ class BlogController extends AbstractController
         }
 
         $articles = $category->getArticles();
+
+        if(!$articles){
+            throw $this->createNotFoundException('No article found');
+        }
+
+        return $this->render('blog/category.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
+    /**
+     * @Route("/tags/{name}", name="show_tag")
+     * @param tag $tag
+     * @return Response
+     */
+    public function showByTag(Tag $tag)
+    {
+        if (!$tag) {
+            throw $this->createNotFoundException('No slug has been sent to search in categories');
+        }
+
+        $articles = $tag->getArticles();
 
         if(!$articles){
             throw $this->createNotFoundException('No article found');
