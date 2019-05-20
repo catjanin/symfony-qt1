@@ -53,9 +53,15 @@ class BlogController extends AbstractController
         '/-/',
         ' ', ucwords(trim(strip_tags($slug)), "-")
     );
+
+    $article = $this->getDoctrine()
+        ->getRepository(Article::class)
+        ->findOneBy(['title' => mb_strtolower($slug)]);
+
     return $this->render(
         'blog/show.html.twig',
         [
+            'article' => $article,
             'slug' => $slug
         ]
     );
