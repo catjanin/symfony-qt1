@@ -89,11 +89,15 @@ class Category
         return $this;
     }
 
-
     public function setArticles(?Article $articles): self
     {
         $this->articles = $articles;
 
         return $this;
+    }
+
+    public function add(string $string)
+    {
+
     }
 }

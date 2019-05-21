@@ -3,10 +3,11 @@
 {% block title %}All articles{% endblock %}
 
 {% block body %}
+    {{ articles|json_encode() }}
     <h1>All articles from article s table : </h1>
     {% for article in articles %}
         <div>
-            <h2>{{ loop.index }} / {{ article.title }} - Category : {{ article.category.name }}</h2>
+            <h2>{{ loop.index }} / <a href="/blog/show/{{ articlesSlugs[loop.index-1] }}">{{ article.title }}</a>- Category : {{ article.category.name }}</h2>
             <p>{{ article.content }}</p>
         </div>
         <strong>Tags :</strong>

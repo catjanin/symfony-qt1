@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Tag;
+use App\Form\CategoryType;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 class BlogController extends AbstractController
 {
@@ -27,8 +27,15 @@ class BlogController extends AbstractController
             throw $this->createNotFoundException('No article found');
         }
 
+        $artTitles = [];
+
+        foreach ($articles as $key => $val) {
+            $artTitles[] = strtolower(str_replace(' ', '-', $val->title));
+        }
+
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
+            'articlesSlugs' => $artTitles,
         ]);
     }
 
@@ -74,7 +81,6 @@ class BlogController extends AbstractController
      */
     public function showByCategory(Category $category)
     {
-
         if (!$category) {
             throw $this->createNotFoundException('No slug has been sent to search in categories');
         }

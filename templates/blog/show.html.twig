@@ -4,15 +4,14 @@
 
 {% block body %}
     <h1>{{ slug }}</h1>
-
         <div>
-            <h2>{{ article.title }} - Category : {{ article.category.name }}</h2>
+            <h2>{{ article.title }} / {{ article.title }}  - Category : {{ article.category.name }}</h2>
             <p>{{ article.content }}</p>
         </div>
         <strong>Tags :</strong>
         <ul>
             {% for tag in article.tags %}
-                <li>{{ tag.name }} </li>
+                <li>{{ tag.name }}</li>
             {% else %}
                 <li>No tags for this article</li>
             {% endfor %}
