@@ -96,8 +96,4 @@ class Category
         return $this;
     }
 
-    public function add(string $string)
-    {
-
-    }
 }
