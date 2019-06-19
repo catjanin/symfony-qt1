@@ -106,21 +106,28 @@ class __TwigTemplate_5388c48504d8dda03757e3417983d8f56965e185f36a2bc57aa848265ed
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 20, $this->source); })()), "content", [], "any", false, false, false, 20), "html", null, true);
         echo "</td>
             </tr>
+            <tr>
+                <th>Slug</th>
+                <td>";
+        // line 24
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 24, $this->source); })()), "slug", [], "any", false, false, false, 24), "html", null, true);
+        echo "</td>
+            </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 25
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("article_index");
         echo "\">back to list</a>
 
     <a href=\"";
-        // line 27
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("article_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 27, $this->source); })()), "id", [], "any", false, false, false, 27)]), "html", null, true);
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("article_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 31, $this->source); })()), "id", [], "any", false, false, false, 31)]), "html", null, true);
         echo "\">edit</a>
 
     ";
-        // line 29
+        // line 33
         echo twig_include($this->env, $context, "article/_delete_form.html.twig");
         echo "
 ";
@@ -144,7 +151,7 @@ class __TwigTemplate_5388c48504d8dda03757e3417983d8f56965e185f36a2bc57aa848265ed
 
     public function getDebugInfo()
     {
-        return array (  124 => 29,  119 => 27,  114 => 25,  106 => 20,  99 => 16,  92 => 12,  84 => 6,  75 => 5,  57 => 3,  35 => 1,);
+        return array (  131 => 33,  126 => 31,  121 => 29,  113 => 24,  106 => 20,  99 => 16,  92 => 12,  84 => 6,  75 => 5,  57 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -169,6 +176,10 @@ class __TwigTemplate_5388c48504d8dda03757e3417983d8f56965e185f36a2bc57aa848265ed
             <tr>
                 <th>Content</th>
                 <td>{{ article.content }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ article.slug }}</td>
             </tr>
         </tbody>
     </table>
