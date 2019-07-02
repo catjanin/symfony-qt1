@@ -58,18 +58,14 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
         echo "    </head>
     <body>
     <header>
+    </header>
         ";
-        // line 11
-        $this->loadTemplate("navbar.html.twig", "base.html.twig", 11)->display($context);
         // line 12
-        echo "    </header>
-        ";
-        // line 13
         $this->displayBlock('body', $context, $blocks);
-        // line 14
+        // line 13
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 20
+        // line 19
         echo "    </body>
 </html>
 ";
@@ -117,7 +113,7 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
 
     }
 
-    // line 13
+    // line 12
     public function block_body($context, array $blocks = [])
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -134,7 +130,7 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
 
     }
 
-    // line 14
+    // line 13
     public function block_javascripts($context, array $blocks = [])
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -143,12 +139,12 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 15
+        // line 14
         echo "            <script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
             <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>
             <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
             ";
-        // line 18
+        // line 17
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
         echo "
         ";
@@ -165,14 +161,9 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
         return "base.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  152 => 18,  147 => 15,  138 => 14,  121 => 13,  103 => 7,  85 => 6,  73 => 20,  70 => 14,  68 => 13,  65 => 12,  63 => 11,  58 => 8,  56 => 7,  52 => 6,  45 => 1,);
+        return array (  148 => 17,  143 => 14,  134 => 13,  117 => 12,  99 => 7,  81 => 6,  69 => 19,  66 => 13,  64 => 12,  58 => 8,  56 => 7,  52 => 6,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -187,7 +178,6 @@ class __TwigTemplate_bd2491052d9a6570abc0030baece97b641fe7e731ed136658dd059858a4
     </head>
     <body>
     <header>
-        {% include 'navbar.html.twig' %}
     </header>
         {% block body %}{% endblock %}
         {% block javascripts %}
